@@ -9,8 +9,8 @@ split:
 
 model:
   type: "random_forest"
-  n_estimators: 200
-  max_depth: 8
+  n_estimators: 150
+  max_depth: 6
   random_state: 42
 
 paths:
