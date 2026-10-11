@@ -1,0 +1,19 @@
+data:
+  raw_path: "data/ckd_raw.csv"
+  clean_path: "data/ckd_clean.csv"
+  target_column: "class"
+
+split:
+  test_size: 0.2
+  random_state: 42
+
+model:
+  type: "random_forest"
+  n_estimators: 200
+  max_depth: 8
+  random_state: 42
+
+paths:
+  model_output: "models/ckd_pipeline.pkl"
+  metrics_output: "outputs/metrics.json"
+  predictions_output: "outputs/predictions.csv"
