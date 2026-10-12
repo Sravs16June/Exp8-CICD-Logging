@@ -40,6 +40,21 @@ jobs:
         run: |
           python src/ci_quality_gate.py
 
+      - name: Package validayed model artifact
+        if: success()
+        run: |
+          mkdir -p dist
+          cp models/ckd_pipeline.pkl dist/ckd_pipeline_validated.pkl
+          cp outputs/quality_gate_result.json dist/
+          echo "Artifact packaged in dist/ - ready for manual deployment approval"
+
+      - name: Upload build artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with: 
+          name: validated-model-${{ github.sha }}
+          path: dist/       
+
       - name: Report workflow outcome
         if: always()
         run: |
